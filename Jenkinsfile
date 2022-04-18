@@ -3,14 +3,14 @@ pipeline{
     stages{
         stage('Code quality analysis'){
             steps{
-                withSonarQubeEnv(credentialsId: 'sonar-token', installationName: 'sonar'){
+                withSonarQubeEnv(credentialsId: 'sonar-cloud', installationName: 'sonar'){
                     sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
                 }
             }
         }
         stage("Maven clean package"){
             steps{
-                sh 'mvn clean package'
+                sh 'mvn clean package -Dmaven.test.skip'
             }
         }
     }
