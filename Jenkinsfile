@@ -1,6 +1,13 @@
 pipeline{
     agent any
     stages{
+        stage('Code quality analysis'){
+            steps{
+                withSonarQubeEnv(credentialsId: 'sonar-token', installationName: 'sonar-scanner'){
+                    sh 'mvn verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar'
+                }
+            }
+        }
         stage("Maven clean package"){
             steps{
                 sh 'mvn clean package'
