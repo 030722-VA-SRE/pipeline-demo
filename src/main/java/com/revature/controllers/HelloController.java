@@ -31,6 +31,6 @@ public class HelloController {
 			}
 		}
 		
-		return String.format("Hello from Jenkins! from %s:%s", ipAddress, port);
+		return String.format("Hello from Jenkins(this time we pay attention)! from %s:%s", ipAddress, port);
 	}
 }
