@@ -62,7 +62,7 @@ pipeline{
                         sh 'aws eks update-kubeconfig --name kevin-sre-1285'
                         sh './kubectl get pods -n kevin-tranhuu'
                         sh "echo $registry:$currentBuild.number"
-                        sh "./kubectl set image deployment/demo-deployment demo-container=$registry:$currentBuild.number"
+                        sh "./kubectl set image -n kevin-tranhuu deployment/demo-deployment demo-container=$registry:$currentBuild.number"
                     }
                 }
             }
